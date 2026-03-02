@@ -1,1 +1,1 @@
-# spring-boot-fitness-tracker-with-api
+# spring-boot-fitness-tracker-with-ai
