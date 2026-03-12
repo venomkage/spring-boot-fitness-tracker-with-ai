@@ -14,9 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ActivityService {
     private final ActivityRepository activityRepository;
+    private final UserValidationService userValidationService;
     ModelMapper modelMapper = new ModelMapper();
 
     public ActivityResponse trackActivity(ActivityRequest activityRequest) {
+
+        boolean isValidUser = userValidationService.validateUser(activityRequest.getUserId());
+
+        if(!isValidUser) throw new RuntimeException("Invalid user");
 
         Activity activity = Activity.builder()
                 .userId(activityRequest.getUserId())

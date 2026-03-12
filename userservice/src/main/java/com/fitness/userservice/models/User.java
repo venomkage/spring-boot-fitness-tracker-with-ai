@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @GeneratedValue
-    private Long id;
+    private String id;
 
     @Column(unique = true)
     private String email;

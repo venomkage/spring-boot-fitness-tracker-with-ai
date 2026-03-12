@@ -16,8 +16,13 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable Long id){
+    public ResponseEntity<UserResponse> getUser(@PathVariable String id){
         return ResponseEntity.ok(userService.getUser(id));
+    }
+
+    @GetMapping("/{id}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String id){
+        return ResponseEntity.ok(userService.existsByUserId(id));
     }
 
     @PostMapping("/register")

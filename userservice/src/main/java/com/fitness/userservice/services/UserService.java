@@ -41,7 +41,7 @@ public class UserService {
 
     }
 
-    public UserResponse getUser(Long id) {
+    public UserResponse getUser(String id) {
 
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found!"));
 
@@ -54,5 +54,9 @@ public class UserService {
         userResponse.setCreatedAt(user.getCreatedAt());
         userResponse.setUpdatedAt(user.getUpdatedAt());
         return userResponse;
+    }
+
+    public Boolean existsByUserId(String id) {
+        return userRepository.existsById(id);
     }
 }
